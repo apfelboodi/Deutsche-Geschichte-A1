@@ -42,20 +42,22 @@ const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack }) => {
       </div>
 
       <div>
+        <div dir="ltr" className="text-left mb-6">
+          <p className="text-lg leading-relaxed whitespace-pre-wrap text-slate-800 text-justify">
+            {story.germanText}
+          </p>
+        </div>
+
         <div className="text-right mb-4">
           <button onClick={toggleTranslation} className="px-4 py-2 rounded-lg text-sm font-bold font-vazir bg-yellow-300 text-yellow-900 hover:bg-yellow-400 transition-colors flex-shrink-0">
             {showTranslation ? 'پنهان کردن ترجمه' : 'ترجمه فارسی'}
           </button>
         </div>
+
         <div className="mb-6">
           <audio controls src={story.audioSrc} className="w-full rounded-lg">
             Your browser does not support the audio element.
           </audio>
-        </div>
-        <div dir="ltr" className="text-left mb-6">
-          <p className="text-lg leading-relaxed whitespace-pre-wrap text-slate-800 text-justify">
-            {story.germanText}
-          </p>
         </div>
         
         {showTranslation && (
