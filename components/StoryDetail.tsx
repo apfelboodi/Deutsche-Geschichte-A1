@@ -5,9 +5,11 @@ import type { Story } from '../types';
 interface StoryDetailProps {
   story: Story;
   onBack: () => void;
+  onNext: () => void;
+  isLastStory: boolean;
 }
 
-const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack }) => {
+const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack, onNext, isLastStory }) => {
   const [showTranslation, setShowTranslation] = useState(false);
 
   const toggleTranslation = () => {
@@ -18,12 +20,23 @@ const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack }) => {
     <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg max-w-4xl mx-auto animate-fade-in">
       <div className="relative mb-8">
         <div className="absolute top-0 left-0">
-          <button onClick={onBack} className="p-2 rounded-full hover:bg-slate-200 transition-colors">
+          <button onClick={onBack} aria-label="Previous Story" className="p-2 rounded-full hover:bg-slate-200 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
           </button>
         </div>
+        
+        {!isLastStory && (
+           <div className="absolute top-0 right-0">
+            <button onClick={onNext} aria-label="Next Story" className="p-2 rounded-full hover:bg-slate-200 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </div>
+        )}
+
         <div className="text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
             <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md bg-yellow-500 border-2 border-white">
