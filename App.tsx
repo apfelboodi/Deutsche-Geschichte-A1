@@ -25,7 +25,17 @@ const App: React.FC = () => {
     }
   };
 
+  const handlePreviousStory = () => {
+    if (selectedStoryId === null) return;
+    const currentIndex = stories.findIndex(story => story.id === selectedStoryId);
+    if (currentIndex > 0) {
+      const prevStory = stories[currentIndex - 1];
+      setSelectedStoryId(prevStory.id);
+    }
+  };
+
   const selectedStory = stories.find(story => story.id === selectedStoryId);
+  const isFirstStory = selectedStoryId === stories[0]?.id;
   const isLastStory = selectedStoryId === stories[stories.length - 1]?.id;
 
   return (
@@ -35,7 +45,9 @@ const App: React.FC = () => {
           <StoryDetail 
             story={selectedStory} 
             onBack={handleBackToList} 
+            onPrevious={handlePreviousStory}
             onNext={handleNextStory}
+            isFirstStory={isFirstStory}
             isLastStory={isLastStory}
           />
         ) : (
