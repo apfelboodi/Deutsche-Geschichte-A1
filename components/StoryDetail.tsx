@@ -5,11 +5,13 @@ import type { Story } from '../types';
 interface StoryDetailProps {
   story: Story;
   onBack: () => void;
+  onPrevious: () => void;
   onNext: () => void;
+  isFirstStory: boolean;
   isLastStory: boolean;
 }
 
-const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack, onNext, isLastStory }) => {
+const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack, onPrevious, onNext, isFirstStory, isLastStory }) => {
   const [showTranslation, setShowTranslation] = useState(false);
 
   const toggleTranslation = () => {
@@ -20,22 +22,29 @@ const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack, onNext, isLast
     <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg max-w-4xl mx-auto animate-fade-in">
       <div className="relative mb-8">
         <div className="absolute top-0 left-0">
-          <button onClick={onBack} aria-label="Previous Story" className="p-2 rounded-full hover:bg-slate-200 transition-colors">
+          <button onClick={onBack} aria-label="Back to list" className="p-2 rounded-full hover:bg-slate-200 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
           </button>
         </div>
         
-        {!isLastStory && (
-           <div className="absolute top-0 right-0">
+        <div className="absolute top-0 right-0 flex items-center gap-2">
+            {!isFirstStory && (
+                <button onClick={onPrevious} aria-label="Previous Story" className="p-2 rounded-full hover:bg-slate-200 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+            )}
+            {!isLastStory && (
             <button onClick={onNext} aria-label="Next Story" className="p-2 rounded-full hover:bg-slate-200 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </button>
-          </div>
-        )}
+            )}
+        </div>
 
         <div className="text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
