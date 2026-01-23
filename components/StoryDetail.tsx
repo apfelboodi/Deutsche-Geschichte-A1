@@ -48,15 +48,15 @@ const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack, onPrevious, on
 
         <div className="text-center pt-2">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md bg-yellow-500 border-2 border-white">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md bg-[#eab308] border-2 border-white">
               {story.id}
             </div>
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-slate-200">
-              <span className="font-bold text-slate-800 text-xl">A1</span>
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md border-2 border-[#eab308]">
+              <span className="font-bold text-[#a16207] text-xl">A1</span>
             </div>
           </div>
-          <div className="inline-block p-3 px-6 md:p-4 md:px-8 rounded-lg border-2 border-yellow-500 bg-yellow-100">
-            <h2 className="text-xl md:text-2xl font-bold text-yellow-700" dir="ltr">
+          <div className="inline-block p-3 px-6 md:p-4 md:px-8 rounded-lg border-2 border-[#eab308] bg-[#fef9c3]">
+            <h2 className="text-xl md:text-2xl font-bold text-[#a16207]" dir="ltr">
               {story.germanTitle}
             </h2>
           </div>
@@ -71,7 +71,7 @@ const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack, onPrevious, on
         </div>
 
         <div className="text-right">
-          <button onClick={toggleTranslation} className="px-6 py-3 rounded-xl text-base font-bold font-vazir bg-[#eab308] text-white hover:bg-[#d9a306] transition-colors flex-shrink-0 shadow-md">
+          <button onClick={toggleTranslation} className="px-6 py-3 rounded-xl text-base font-bold font-vazir bg-[#eab308] text-white hover:bg-[#ca8a04] transition-colors flex-shrink-0 shadow-md">
             {showTranslation ? 'پنهان کردن ترجمه' : 'ترجمه فارسی'}
           </button>
         </div>
@@ -84,8 +84,8 @@ const StoryDetail: React.FC<StoryDetailProps> = ({ story, onBack, onPrevious, on
         
         {showTranslation && (
           <div dir="rtl" className="text-right animate-fade-in">
-             <div className="p-6 md:p-10 bg-[#fefce8] border border-[#eab308] rounded-2xl shadow-sm">
-                <p className="text-xl leading-relaxed whitespace-pre-wrap text-slate-800 text-justify font-vazir">
+             <div className="px-6 py-4 md:px-10 md:py-6 bg-[#fefce8] border border-[#eab308] rounded-2xl shadow-sm">
+                <p className="text-xl leading-normal whitespace-pre-wrap text-slate-800 text-justify font-vazir">
                     {story.persianText}
                 </p>
              </div>
