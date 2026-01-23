@@ -16,8 +16,8 @@ const StoryList: React.FC<StoryListProps> = ({ stories, onSelectStory }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
         </a>
-        <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-md border-2 border-slate-200">
-          <span className="font-bold text-slate-800 text-2xl">A1</span>
+        <div className="w-12 h-12 bg-[#fef9c3] rounded-lg flex items-center justify-center shadow-md border-2 border-[#eab308]">
+          <span className="font-bold text-[#a16207] text-2xl">A1</span>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
@@ -25,9 +25,9 @@ const StoryList: React.FC<StoryListProps> = ({ stories, onSelectStory }) => {
           <div
             key={story.id}
             onClick={() => onSelectStory(story.id)}
-            className="p-4 bg-white rounded-lg shadow-md cursor-pointer hover:shadow-xl border-2 border-transparent transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-center text-center relative pt-8 hover:border-yellow-500"
+            className="p-4 bg-white rounded-lg shadow-md cursor-pointer hover:shadow-xl border-2 border-transparent transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-center text-center relative pt-8 hover:border-[#eab308]"
           >
-            <div className="absolute top-[-1rem] left-1/2 -translate-x-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-base shadow-md bg-yellow-500 border-2 border-white">
+            <div className="absolute top-[-1rem] left-1/2 -translate-x-1/2 w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-base shadow-md bg-[#eab308] border-2 border-white">
               {story.id}
             </div>
             <p className="font-semibold text-slate-800" dir="ltr">
